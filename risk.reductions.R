@@ -2,7 +2,7 @@
 # function to randomly select risk reductions
 # August 2016
 
-risk.reduction = function(SBP, LDL_CHOL, smoking, age){
+risk.reduction = function(SBP, LDL_CHOL, smoking, age, under.null=FALSE){
 
 ## Baseline risk of an event
 MI_risk_men = (1 - ((1 - 0.048)^(1/2))) # 4.8% annual rate to 6 month
@@ -26,6 +26,13 @@ SBP_change = -10
 risk_reduction_MI_mean = 0.76
 risk_reduction_MI_high = 0.86
 risk_reduction_MI_low = 0.68
+# if the null is true put risk at 1 (Sep 2018)
+if(under.null == TRUE){
+  rdiff = 1 - risk_reduction_MI_mean # difference to 1  
+  risk_reduction_MI_mean = risk_reduction_MI_mean + rdiff
+  risk_reduction_MI_high = risk_reduction_MI_high + rdiff # move CIs too
+  risk_reduction_MI_low = risk_reduction_MI_low + rdiff
+}
 risk_reduction_MI_std_error = (risk_reduction_MI_high-
                  risk_reduction_MI_low)/3.92
 risk_reduction_MI_random = rnorm(1,risk_reduction_MI_mean,
@@ -34,6 +41,12 @@ risk_reduction_MI_random = rnorm(1,risk_reduction_MI_mean,
 risk_reduction_Stroke_mean = 0.65
 risk_reduction_Stroke_high = 0.8
 risk_reduction_Stroke_low = 0.53
+if(under.null == TRUE){
+  rdiff = 1 - risk_reduction_Stroke_mean # difference to 1  
+  risk_reduction_Stroke_mean = risk_reduction_Stroke_mean + rdiff
+  risk_reduction_Stroke_high = risk_reduction_Stroke_high + rdiff # move CIs too
+  risk_reduction_Stroke_low = risk_reduction_Stroke_low + rdiff
+}
 risk_reduction_Stroke_std_error = (risk_reduction_Stroke_high-
                    risk_reduction_Stroke_low)/3.92
 risk_reduction_Stroke_random = rnorm(1,risk_reduction_Stroke_mean,
@@ -63,6 +76,12 @@ LDL_change = -1
 risk_reduction_MI_mean = 0.74
 risk_reduction_MI_high = 0.78
 risk_reduction_MI_low = 0.7
+if(under.null == TRUE){
+  rdiff = 1 - risk_reduction_MI_mean # difference to 1  
+  risk_reduction_MI_mean = risk_reduction_MI_mean + rdiff
+  risk_reduction_MI_high = risk_reduction_MI_high + rdiff # move CIs too
+  risk_reduction_MI_low = risk_reduction_MI_low + rdiff
+}
 risk_reduction_MI_std_error = (risk_reduction_MI_high-
                  risk_reduction_MI_low)/3.92
 risk_reduction_MI_random = rnorm(1,risk_reduction_MI_mean,
@@ -71,6 +90,12 @@ risk_reduction_MI_random = rnorm(1,risk_reduction_MI_mean,
 risk_reduction_Stroke_mean = 0.83
 risk_reduction_Stroke_high = 0.90
 risk_reduction_Stroke_low = 0.76
+if(under.null == TRUE){
+  rdiff = 1 - risk_reduction_Stroke_mean # difference to 1  
+  risk_reduction_Stroke_mean = risk_reduction_Stroke_mean + rdiff
+  risk_reduction_Stroke_high = risk_reduction_Stroke_high + rdiff # move CIs too
+  risk_reduction_Stroke_low = risk_reduction_Stroke_low + rdiff
+}
 risk_reduction_Stroke_std_error = (risk_reduction_Stroke_high-
                    risk_reduction_Stroke_low)/3.92
 risk_reduction_Stroke_random = rnorm(1,risk_reduction_Stroke_mean,
@@ -89,6 +114,12 @@ LDL_change = -1
 risk_reduction_MI_mean = 0.83
 risk_reduction_MI_high = 0.93
 risk_reduction_MI_low = 0.74
+if(under.null == TRUE){
+  rdiff = 1 - risk_reduction_MI_mean # difference to 1  
+  risk_reduction_MI_mean = risk_reduction_MI_mean + rdiff
+  risk_reduction_MI_high = risk_reduction_MI_high + rdiff # move CIs too
+  risk_reduction_MI_low = risk_reduction_MI_low + rdiff
+}
 risk_reduction_MI_std_error = (risk_reduction_MI_high-
                  risk_reduction_MI_low)/3.92
 risk_reduction_MI_random = rnorm(1,risk_reduction_MI_mean,
@@ -97,6 +128,12 @@ risk_reduction_MI_random = rnorm(1,risk_reduction_MI_mean,
 risk_reduction_Stroke_mean = 0.9
 risk_reduction_Stroke_high = 1.04
 risk_reduction_Stroke_low = 0.78
+if(under.null == TRUE){
+  rdiff = 1 - risk_reduction_Stroke_mean # difference to 1  
+  risk_reduction_Stroke_mean = risk_reduction_Stroke_mean + rdiff
+  risk_reduction_Stroke_high = risk_reduction_Stroke_high + rdiff # move CIs too
+  risk_reduction_Stroke_low = risk_reduction_Stroke_low + rdiff
+}
 risk_reduction_Stroke_std_error = (risk_reduction_Stroke_high-
                    risk_reduction_Stroke_low)/3.92
 risk_reduction_Stroke_random = rnorm(1,risk_reduction_Stroke_mean,
@@ -119,6 +156,12 @@ smoking_change = "Quit"
 risk_reduction_MI_mean = 0.68
 risk_reduction_MI_high = 0.82
 risk_reduction_MI_low = 0.57
+if(under.null == TRUE){
+  rdiff = 1 - risk_reduction_MI_mean # difference to 1  
+  risk_reduction_MI_mean = risk_reduction_MI_mean + rdiff
+  risk_reduction_MI_high = risk_reduction_MI_high + rdiff # move CIs too
+  risk_reduction_MI_low = risk_reduction_MI_low + rdiff
+}
 risk_reduction_MI_std_error = (risk_reduction_MI_high-
                  risk_reduction_MI_low)/3.92
 risk_reduction_MI_random = rnorm(1,risk_reduction_MI_mean,
@@ -127,6 +170,12 @@ risk_reduction_MI_random = rnorm(1,risk_reduction_MI_mean,
 risk_reduction_Stroke_mean = 0.60
 risk_reduction_Stroke_high = 0.67
 risk_reduction_Stroke_low = 0.53
+if(under.null == TRUE){
+  rdiff = 1 - risk_reduction_Stroke_mean # difference to 1  
+  risk_reduction_Stroke_mean = risk_reduction_Stroke_mean + rdiff
+  risk_reduction_Stroke_high = risk_reduction_Stroke_high + rdiff # move CIs too
+  risk_reduction_Stroke_low = risk_reduction_Stroke_low + rdiff
+}
 risk_reduction_Stroke_std_error = (risk_reduction_Stroke_high-
                    risk_reduction_Stroke_low)/3.92
 risk_reduction_Stroke_random = rnorm(1,risk_reduction_Stroke_mean,
@@ -146,6 +195,12 @@ smoking_change = "Quit"
 risk_reduction_MI_mean = 0.68
 risk_reduction_MI_high = 0.82
 risk_reduction_MI_low = 0.57
+if(under.null == TRUE){
+  rdiff = 1 - risk_reduction_MI_mean # difference to 1  
+  risk_reduction_MI_mean = risk_reduction_MI_mean + rdiff
+  risk_reduction_MI_high = risk_reduction_MI_high + rdiff # move CIs too
+  risk_reduction_MI_low = risk_reduction_MI_low + rdiff
+}
 risk_reduction_MI_std_error = (risk_reduction_MI_high-
                  risk_reduction_MI_low)/3.92
 risk_reduction_MI_random = rnorm(1,risk_reduction_MI_mean,
@@ -154,6 +209,12 @@ risk_reduction_MI_random = rnorm(1,risk_reduction_MI_mean,
 risk_reduction_Stroke_mean = 0.55
 risk_reduction_Stroke_high = 0.63
 risk_reduction_Stroke_low = 0.47
+if(under.null == TRUE){
+  rdiff = 1 - risk_reduction_Stroke_mean # difference to 1  
+  risk_reduction_Stroke_mean = risk_reduction_Stroke_mean + rdiff
+  risk_reduction_Stroke_high = risk_reduction_Stroke_high + rdiff # move CIs too
+  risk_reduction_Stroke_low = risk_reduction_Stroke_low + rdiff
+}
 risk_reduction_Stroke_std_error = (risk_reduction_Stroke_high-
                    risk_reduction_Stroke_low)/3.92
 risk_reduction_Stroke_random = rnorm(1,risk_reduction_Stroke_mean,
